@@ -30,6 +30,7 @@ table{
   width: 1370px;
   margin-left: 10px;
 }
+
 .box{
   background: #fff;
   border-radius: 10px;
@@ -39,22 +40,23 @@ table{
   margin-left: 45px;
 }
 
-
 td {
   font-family: "Lucida Console";
   padding: 15px;
   text-align: center;
   color: #001233;
 }
-th{
+
+th {
   font-family: "McLaren", cursive;
   padding: 15px;
   background-color: #8C001A;
   color: #CAC0B3;
 }
+
 tr:nth-child(even) {background-color: #f2f2f2;}
 
-button{
+button {
   background-color:  #8C001A;
   font-family: "Lucida Console";
   width: 100px;
