@@ -1,29 +1,11 @@
 import Table from 'react-bootstrap/Table';
-
-function Header(){
-    return <div>
-  <header>
-      Molo Air 
-    </header>
-  
-    <h1>
-       Flight Number:      MN123
-    </h1>
-  
-        </div>
-   }
-  
-   function Footer(){
-      const currentYear= new Date().getFullYear();
-      return <footer className="footer">
-        <p>Copyright ⓒ {currentYear}</p>
-      </footer>
-       }
+import Header from './Header';
+import Footer from './Footer';
 
 function Bookings(){
     return (
-        <div >
-        <Header/>
+        <div>
+          <Header></Header>
         <div className="box">
         <Table className="table"striped bordered hover>
       <thead>
@@ -50,12 +32,9 @@ function Bookings(){
       </tbody>
     </Table>
         </div>
-  
-  
-    <Footer/>
+        <Footer></Footer>
       </div>
     )
-
 }
 
 export default Bookings;

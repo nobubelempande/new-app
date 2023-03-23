@@ -1,75 +1,29 @@
-import Table from 'react-bootstrap/Table';
-import { useNavigate } from "react-router-dom";
+import Axios from 'axios';
+import { useEffect, useState } from 'react';
+import Flights from './Flights';
+import Header from './Header';
+import Footer from './Footer';
 
-function Header(){
-  return <div>
-<header>
-    Molo Air 
-  </header>
+export default function Home(){
+  useEffect(() => {
+    Axios.get("http://localhost:8202/flights").then(x => {
+      setFlights(x.data);
+    })
+  });
 
-  <h1>
-      Departure Flights
-  </h1>
+  const [flights, setFlights] = useState([]);
+  const flightObj = (flight, i) => {
+    return <Flights flights={flight} key={i} />
+  }
+  const flightList = flights.map((x, i) => flightObj(x, i))
 
+  return(
+      <div>
+        <Header></Header>
+
+        {flightList}
+
+        <Footer></Footer>
       </div>
- }
-
- function Footer(){
-    const currentYear= new Date().getFullYear();
-    return <footer className="footer">
-      <p>Copyright ⓒ {currentYear}</p>
-    </footer>
-     }
-
-
-     const Home = (props) => {
-        const navigate = useNavigate();
-   return (
-    <div >
-      <Header/>
-      <div className="box">
-      <Table className="table"striped bordered hover>
-    <thead>
-      <tr>
-        <th>Flight Number</th>
-        <th>Origin</th>
-        <th>Destination</th>
-        <th>Departure Time</th>
-        <th>Arrival Time</th>
-        <th>Manage Bookings</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>MN123</td>
-        <td>JOHANNESBURG</td>
-        <td>CAPE_TOWN</td>
-        <td>2020-05-06T12:35:00</td>
-        <td>2020-05-06T14:40:00</td>
-        <td>
-        <button mat-raised-button color="accent" onClick={() => navigate("/bookings")}>VIEW</button>
-        </td>
-      </tr>
-      <tr className='button'>
-        <td>MN123</td>
-        <td>JOHANNESBURG</td>
-        <td>CAPE_TOWN</td>
-        <td>2020-05-06T12:35:00</td>
-        <td>2020-05-06T14:40:00</td>
-        <td>
-        <button mat-raised-button color="accent" onClick={() => navigate("/bookings")} >VIEW</button>
-        </td>
-      </tr>
-    </tbody>
-  </Table>
-      </div>
-
-
-  <Footer/>
-    </div>
-    
-);
+  )
 }
-     
-
-export default Home;
