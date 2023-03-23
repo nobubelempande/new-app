@@ -1,13 +1,19 @@
 function Header(){
     return(
-        <div>
+        <div >
             <header>
                 Molo Air 
             </header>
         
-            <h1>
-                Flight Number: MN123
+        <div className="moloButton">
+        <h1>
+               O.R Tambo Int. Airport
+                
+            <button>NEW FLIGHT</button>
             </h1>
+
+        </div>
+         
         </div>
     )
 }

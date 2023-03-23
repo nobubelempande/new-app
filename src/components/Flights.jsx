@@ -1,28 +1,48 @@
 import { useNavigate } from "react-router-dom";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import flying from '../destination.png'
 
 export default function Flights({flights}){
     const navigate = useNavigate();
+    const formatDate = (date) => {
+        let newDate = date.split("T").join(" ")
+        return newDate.substring(0, newDate.length -3)
+    }
+
 
     return(
-        <div>        
-            <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                    <div>
-                        <h1>{flights.origin} to {flights.destination}</h1>
-                        <h2>{flights.flightNumber}</h2>
-                        
-                        {/* Add other information */}
-                    </div>
-                </CardContent>
+        <div className="flightDetails">
+         <div>
+         <h1 className="flightNumber">{flights.flightNumber}</h1>
+         </div>
 
-                <CardActions>
-                <Button onClick={() => navigate("/bookings")}>VIEW</Button>
-                </CardActions>
-            </Card>
+         <div>
+         <h1 className="flightOrigin">{flights.origin}</h1>
+         <h2> {formatDate(flights.departureTime)} </h2>
+         </div>
+
+         <div className="checking">
+         <figure className="flight-logo">
+                <img id="flight-logo" src={flying} alt="airplane icon"/>
+            </figure>
+         </div>
+
+         <div>
+         <h1 className="flightDestination">{flights.destination}</h1>
+         <h2> {formatDate(flights.arrivalTime)} </h2>
+         </div>
+
+         <div>
+         <button onClick={() => navigate("/bookings")}>MANAGE</button>
+         </div>
+               
+            
+        
+        
+    
         </div>
+
+    
+
     )
 }

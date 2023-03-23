@@ -4,6 +4,7 @@ import Flights from './Flights';
 import Header from './Header';
 import Footer from './Footer';
 
+
 export default function Home(){
   useEffect(() => {
     Axios.get("http://localhost:8202/flights").then(x => {
@@ -18,12 +19,11 @@ export default function Home(){
   const flightList = flights.map((x, i) => flightObj(x, i))
 
   return(
-      <div>
+      <div className='main'>
         <Header></Header>
-
+        <div className="flights">
         {flightList}
-
-        <Footer></Footer>
+        </div>
       </div>
   )
 }
