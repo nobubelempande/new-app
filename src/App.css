@@ -6,7 +6,7 @@ header{
     background-color:  #001233;
     text-align:center;
     font-family: "Lucida Console";
-    color: #CAC0B3;
+    color: white;
     margin: auto -16px;
     padding: 16px 32px;
 }
@@ -37,19 +37,17 @@ footer p {
 }
 
 .flights{
-  display:block;
-  background: #fff;
-  margin: 20px 40px;
-  padding: 20px 5px;
-  box-shadow: 0 4px 8px 0 , 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+  border-radius: 8px;
+  background: #8b9eb7;
+  margin: 20px 70px;
+  padding: 30px 30px;
 }
 
  .flightDetails{
-  border-radius: 5px;
-  border: .3px solid #e5e5e5;
+  border-radius: 8px;
   background-color: #fff;
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -65,18 +63,16 @@ footer p {
   font-family: 'Rubik', sans-serif;
   font-size: 1em;
   font-weight: normal;
-  color: black;
+  color: #8b9eb7;
   margin-left: 100px;
  }
 
  button {
-  background-color:  #CAC0B3;
-  font-family: "Lucida Console";
+  background-color:  #001233;
+  border-radius: 8px;
   width: 100px;
   height: 45px;
-  border-radius: 8px;
-  color: #001233;
-  box-shadow: 0 8px 16px 0 #001233, 0 6px 20px 0 rgba(0,0,0,0.19);
+  color: white;
   font-family: "McLaren", cursive;
   font-weight: 200;
   padding:10px;
@@ -85,7 +81,7 @@ footer p {
 
 .moloButton button{
   float:right;
-  background-color:  #CAC0B3;
-  font-family: "Lucida Console";
+  background-color:  #001233;
+  font-family: "McLaren", cursive;
   width: 150px;
 }
