@@ -1,8 +1,9 @@
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
-import Flights from './Flights';
-import Header from './Header';
-import Footer from './Footer';
+import Flights from '../components/Flights';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import NewFlight from '../components/NewFlight';
 
 export default function Home(){
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function Home(){
       <div>
         <Header></Header>
 
+        <NewFlight></NewFlight>
         {flightList}
 
         <Footer></Footer>
