@@ -19,8 +19,11 @@ export default function Bookings(){
 
  </div> 
         <div className="box">
-          
+        
+        <div className="accordion">
         <NewBooking></NewBooking>
+        </div>
+        
 
 
 
