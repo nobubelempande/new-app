@@ -36,11 +36,17 @@ footer p {
   height: 80px;
 }
 
+
 .flights{
   border-radius: 8px;
   background: #8b9eb7;
   margin: 20px 70px;
   padding: 30px 30px;
+}
+
+.check{
+  width: 80px;
+  height: 80px;
 }
 
  .flightDetails{
@@ -81,7 +87,55 @@ footer p {
 
 .moloButton button{
   float:right;
+  margin-top:8px;
   background-color:  #001233;
   font-family: "McLaren", cursive;
-  width: 150px;
+  width: 120px;
+}
+
+
+table{
+  width:100%;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+td {
+  font-family: "McLaren", cursive;
+  padding: 15px;
+  text-align: center;
+  color: #001233;
+
+}
+
+th {
+  font-family: "McLaren", cursive;
+  padding: 15px;
+  color: white;
+  background-color: #001233;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+
+.newBooking button{
+  background-color:  #001233;
+  font-family: "McLaren", cursive;
+}
+
+.newBooking h2{
+  color: #8b9eb7;
+  font-weight: 300;
+  padding:10px;
+  margin-left: 40px;
+}
+
+.bookingHeader{
+  display: flex;
+flex-direction: row;
+}
+
+.dest{
+  margin-left: 0px;
 }

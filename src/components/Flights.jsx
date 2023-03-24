@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import Button from '@mui/material/Button';
 import flying from '../destination.png'
+
 
 export default function Flights({flights}){
     const navigate = useNavigate();

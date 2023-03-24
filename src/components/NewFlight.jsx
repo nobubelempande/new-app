@@ -3,6 +3,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import axios from 'axios';
 import { Buffer } from 'buffer';
 import { Flight } from '../dtos/FlightDTO';
+import picture from '../flight.png'
 
 export default function NewFlight(){
     const [flightNumber, setFlightNumber] = useState("");
@@ -28,7 +29,7 @@ export default function NewFlight(){
           },
           
             body: JSON.stringify({ flightNumber: flightNumber, origin: origin, destination: destination, departureTime: departureTime, arrivalTime: arrivalTime, seatsAvailable: seatsAvailable, seatCost: seatCost })
-            // body: JSON.stringify({ firstName: newCustomer.firstName, lastName: newCustomer.lastName, passportNumber: newCustomer.passportNumber, email: newCustomer.email, phoneNumber: newCustomer.phoneNumber })
+
         };
 
         axios.post('http://localhost:8202/flights', requestOptions).then(x => {
@@ -41,11 +42,14 @@ export default function NewFlight(){
     return(
         <div>
              <div className="moloButton">
-        <h1>
-               O.R Tambo Int. Airport
+         <figure >
+                <img className="check" src={picture} alt="airplane icon"/>
+                <button onClick={dialogOpen}>NEW FLIGHT</button>
+            </figure>
+        
                 
-            <button onClick={dialogOpen}>NEW FLIGHT</button>
-            </h1>
+          
+    
 
         </div>
   
