@@ -23,7 +23,10 @@ export default function Home(){
         <Header></Header>
 
         <NewFlight></NewFlight>
+        <div className='flights'>
         {flightList}
+        </div>
+    
       </div>
   )
   }
