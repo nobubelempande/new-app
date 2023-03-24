@@ -6,8 +6,8 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import { Flight } from '../dtos/FlightDTO'; 
-
 import { Buffer } from 'buffer';
+import picture from '../flight.png'
 
 export default function NewFlight(){
     const [flightNumber, setFlightNumber] = useState("");
@@ -41,7 +41,7 @@ export default function NewFlight(){
           },
           
             body: JSON.stringify({ flightNumber: flightNumber, origin: origin, destination: destination, departureTime: departureTime, arrivalTime: arrivalTime, seatsAvailable: seatsAvailable, seatCost: seatCost })
-            // body: JSON.stringify({ firstName: newCustomer.firstName, lastName: newCustomer.lastName, passportNumber: newCustomer.passportNumber, email: newCustomer.email, phoneNumber: newCustomer.phoneNumber })
+
         };
 
         axios.post('http://localhost:8202/flights', newFlight, {
@@ -52,15 +52,19 @@ export default function NewFlight(){
         }).then(x => {
             setOpen(false);
         }).catch(err => {
-            consol.log(err);
+            console.log(err);
         });
     }
 
     return(
         <div>
-            <Button variant="contained" onClick={dialogOpen}>
-                Add Flight
-            </Button>
+            <div className="moloButton">
+            <figure >
+                <img className="check" src={picture} alt="airplane icon"/>
+                <button onClick={dialogOpen}>NEW FLIGHT</button>
+            </figure>
+        </div>
+  
 
             <Dialog open={open} onClose={dialogClose}>
                 <DialogTitle>
