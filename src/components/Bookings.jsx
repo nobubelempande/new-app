@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import Header from './Header';
 import Footer from './Footer';
 
-function Bookings(){
+export default function Bookings(){
     return (
         <div>
           <Header></Header>
@@ -36,5 +36,3 @@ function Bookings(){
       </div>
     )
 }
-
-export default Bookings;

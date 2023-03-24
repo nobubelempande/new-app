@@ -1,7 +1,8 @@
  import './App.css';
- import Home from './components/Home.jsx'
+ import Home from './services/Home.jsx'
  import Bookings from './components/Bookings.jsx'
  import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NewFlight from './components/NewFlight';
 
  const App = () => {
   return (
