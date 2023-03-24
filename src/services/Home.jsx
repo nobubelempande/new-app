@@ -24,7 +24,6 @@ export default function Home(){
 
         <NewFlight></NewFlight>
         {flightList}
-        <Footer></Footer>
       </div>
   )
   }

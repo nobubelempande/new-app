@@ -40,9 +40,15 @@ export default function NewFlight(){
 
     return(
         <div>
-            <Button variant="contained" onClick={dialogOpen}>
-                Add Flight
-            </Button>
+             <div className="moloButton">
+        <h1>
+               O.R Tambo Int. Airport
+                
+            <button onClick={dialogOpen}>NEW FLIGHT</button>
+            </h1>
+
+        </div>
+  
 
             <Dialog open={open} onClose={dialogClose}>
                 <DialogTitle>
