@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormGroup, TextField } from '@mui/material';
 import axios from 'axios';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormGroup, TextField } from '@mui/material';
+import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
+import { Flight } from '../dtos/FlightDTO'; 
+
 import { Buffer } from 'buffer';
-import { Flight } from '../dtos/FlightDTO';
 
 export default function NewFlight(){
     const [flightNumber, setFlightNumber] = useState("");
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
-    const [departureTime, setDepartureTime] = useState("");
-    const [arrivalTime, setArrivalTime] = useState("");
-    const [seatsAvailable, setSeatsAvailable] = useState("");
-    const [seatCost, setSeatCost] = useState("");
+    const [departureTime, setDepartureTime] = useState(dayjs());
+    const [arrivalTime, setArrivalTime] = useState(dayjs());
+    const [seatsAvailable, setSeatsAvailable] = useState(0);
+    const [seatCost, setSeatCost] = useState(0);
+
+    const newFlight = new Flight(
+        flightNumber,
+        origin,
+        destination,
+        departureTime,
+        arrivalTime,
+        seatsAvailable
+    )
 
     const [open, setOpen] = useState(false);
     const dialogOpen = () => {
@@ -23,15 +37,19 @@ export default function NewFlight(){
     const addFlight = () => {
         let requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json',
-            'Authorization':'Basic ' + Buffer.from(`${"admin"}:${"is_a_lie"}`).toString("base64")
+            headers: {'Authorization':'Basic ' + Buffer.from(`${"admin"}:${"is_a_lie"}`).toString("base64")
           },
           
             body: JSON.stringify({ flightNumber: flightNumber, origin: origin, destination: destination, departureTime: departureTime, arrivalTime: arrivalTime, seatsAvailable: seatsAvailable, seatCost: seatCost })
             // body: JSON.stringify({ firstName: newCustomer.firstName, lastName: newCustomer.lastName, passportNumber: newCustomer.passportNumber, email: newCustomer.email, phoneNumber: newCustomer.phoneNumber })
         };
 
-        axios.post('http://localhost:8202/flights', requestOptions).then(x => {
+        axios.post('http://localhost:8202/flights', newFlight, {
+            auth: {
+                username: "admin",
+                password: "is_a_lie"
+            }
+        }).then(x => {
             setOpen(false);
         }).catch(err => {
             consol.log(err);
@@ -60,32 +78,40 @@ export default function NewFlight(){
                                 setFlightNumber(x.target.value);
                             }}
                         />
-                        <TextField autoFocus margin="dense" label="Place of Origin" type="text" fullWidth variant="standard" 
+                        <TextField margin="dense" label="Origin" type="text" fullWidth variant="standard" 
                             onChange = {x => {
                                 setOrigin(x.target.value);
                             }}
                         />
-                        <TextField autoFocus margin="dense" label="Destination" type="text" fullWidth variant="standard" 
+                        <TextField margin="dense" label="Destination" type="text" fullWidth variant="standard" 
                             onChange = {x => {
                                 setDestination(x.target.value);
                             }}
                         />
-                        <TextField autoFocus margin="dense" label="Departure Time" type="text" fullWidth variant="standard" 
-                            onChange = {x => {
-                                setDepartureTime(x.target.value);
-                            }}
-                        />
-                        <TextField autoFocus margin="dense" label="Arrival Time" type="text" fullWidth variant="standard" 
-                            onChange = {x => {
-                                setArrivalTime(x.target.value);
-                            }}
-                        />
-                        <TextField autoFocus margin="dense" label="Available Seats" type="number" fullWidth variant="standard" 
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer components={['DateTimePicker']}>
+                                <DateTimePicker label="Departure Time" fullWidth value={departureTime}
+                                    onChange = {x => {
+                                        setDepartureTime(x);
+                                    }}
+                                />
+                            </DemoContainer>
+                        </LocalizationProvider>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer components={['DateTimePicker']}>
+                                <DateTimePicker label="Arrival Time" fullWidth value={arrivalTime}
+                                    onChange = {x => {
+                                        setArrivalTime(x);
+                                    }}
+                                />
+                            </DemoContainer>
+                        </LocalizationProvider>
+                        <TextField margin="dense" label="Available Seats" type="number" fullWidth variant="standard" 
                             onChange = {x => {
                                 setSeatsAvailable(x.target.value);
                             }}
                         />
-                        <TextField autoFocus margin="dense" label="Cost of Seat" type="text" fullWidth variant="standard" 
+                        <TextField margin="dense" label="Cost of Seat" type="number" fullWidth variant="standard"
                             onChange = {x => {
                                 setSeatCost(x.target.value);
                             }}
