@@ -34,7 +34,7 @@ export default function NewFlight(){
         axios.post('http://localhost:8202/flights', requestOptions).then(x => {
             setOpen(false);
         }).catch(err => {
-            consol.log(err);
+            console.log(err);
         });
     }
 
