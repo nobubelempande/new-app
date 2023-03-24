@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormGroup, TextField } from '@mui/material';
 import axios from 'axios';
 import { Buffer } from 'buffer';
-import { Flight } from '../dtos/FlightDTO';
 import picture from '../flight.png'
 
 export default function NewFlight(){
@@ -46,11 +45,6 @@ export default function NewFlight(){
                 <img className="check" src={picture} alt="airplane icon"/>
                 <button onClick={dialogOpen}>NEW FLIGHT</button>
             </figure>
-        
-                
-          
-    
-
         </div>
   
 

@@ -35,11 +35,6 @@ export default function Flights({flights}){
          <div>
          <button onClick={() => navigate("/bookings")}>MANAGE</button>
          </div>
-               
-            
-        
-        
-    
         </div>
 
     

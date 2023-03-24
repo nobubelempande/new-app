@@ -1,28 +1,29 @@
 import Table from 'react-bootstrap/Table';
 import Header from './Header';
 import Footer from './Footer';
+import NewBooking from './NewBooking';
 import flying from '../destination.png'
+
 
 export default function Bookings(){
     return (
         <div>
           <Header></Header>
           <div className="bookingHeader">
-            <h1>Johannesburg</h1>
-         <figure className="flight-logo">
-                <img id="flight-logo" src={flying} alt="airplane icon"/>
-            </figure>
+    <h1>Johannesburg</h1>
+ <figure className="flight-logo">
+        <img id="flight-logo" src={flying} alt="airplane icon"/>
+    </figure>
 
-            <h1 className="dest">Cape Town</h1>
-         </div>
-          
+    <h1 className="dest">Cape Town</h1>
 
+ </div> 
         <div className="box">
-        <div className="newBooking">
-        <h2 >Available Seats: 12        
-            <button>Book</button>
-            </h2>
-        </div>
+          
+        <NewBooking></NewBooking>
+
+
+
         <Table className="table">
       <thead>
         <tr>

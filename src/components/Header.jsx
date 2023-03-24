@@ -4,9 +4,6 @@ export default function Header(){
             <header>
                 Molo Air 
             </header>
-        
-       
-         
         </div>
     )
 }
