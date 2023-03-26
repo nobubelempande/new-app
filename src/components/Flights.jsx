@@ -18,7 +18,7 @@ export default function Flights({flights}){
 
          <div>
          <h1 className="flightOrigin">{flights.origin}</h1>
-         <h2> {formatDate(flights.departureTime)} </h2>
+         <h2> {(flights.departureTime)} </h2>
          </div>
 
          <div className="checking">
@@ -29,7 +29,7 @@ export default function Flights({flights}){
 
          <div>
          <h1 className="flightDestination">{flights.destination}</h1>
-         <h2> {formatDate(flights.arrivalTime)} </h2>
+         <h2> {(flights.arrivalTime)} </h2>
          </div>
 
          <div>

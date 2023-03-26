@@ -5,13 +5,13 @@ import { Buffer } from 'buffer';
 import picture from '../flight.png'
 
 export default function NewFlight(){
-    const [flightNumber, setFlightNumber] = useState("");
-    const [origin, setOrigin] = useState("");
-    const [destination, setDestination] = useState("");
-    const [departureTime, setDepartureTime] = useState("");
-    const [arrivalTime, setArrivalTime] = useState("");
-    const [seatsAvailable, setSeatsAvailable] = useState("");
-    const [seatCost, setSeatCost] = useState("");
+    const [flightNumber, setFlightNumber] = useState('');
+    const [origin, setOrigin] = useState('');
+    const [destination, setDestination] = useState('');
+    const [departureTime, setDepartureTime] = useState('');
+    const [arrivalTime, setArrivalTime] = useState('');
+    const [seatsAvailable, setSeatsAvailable] = useState('');
+    const [seatCost, setSeatCost] = useState('');
 
     const [open, setOpen] = useState(false);
     const dialogOpen = () => {
@@ -38,6 +38,11 @@ export default function NewFlight(){
         });
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addFlight(flightNumber,origin, destination,departureTime,arrivalTime,seatsAvailable,seatCost);
+     };
+
     return(
         <div>
              <div className="moloButton">
@@ -58,7 +63,7 @@ export default function NewFlight(){
                         Please enter the required flight information below:        
                     </DialogContentText>
 
-                    <FormGroup>
+                    <form onSubmit={handleSubmit}>
                         <TextField autoFocus margin="dense" label="Flight Number" type="text" fullWidth variant="standard" 
                             onChange = {x => {
                                 setFlightNumber(x.target.value);
@@ -94,11 +99,11 @@ export default function NewFlight(){
                                 setSeatCost(x.target.value);
                             }}
                         />
-                    </FormGroup>
+                        <Button type="submit" variant="text" >Add</Button>
+                    </form>
                 </DialogContent>
 
                 <DialogActions>
-                    <Button variant="text" onClick={addFlight}>Add</Button>
                     <Button variant="text" onClick={dialogClose}>Cancel</Button>
                 </DialogActions>
             </Dialog>
